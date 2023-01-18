@@ -40,7 +40,7 @@ const CreateAccount = () => {
         <>
             <Navbar />
             <div className='mt-5 container'>
-                <form onSubmit={handleSubmit} className="form-group mx-auto" style={{ width: "600px", marginTop: "50px", border: "1px solid black", padding: "30px" }}>
+                <form onSubmit={handleSubmit} className="form-group mx-auto" style={{ width: "600px",margin: "50px", border: "1px solid black", padding: "30px" }}>
                 <h2 className="mb-3">Create an Account</h2>
                     <div class="form-group row">
                         <label for="accountName" class="col-sm-2 col-form-label">Account Name</label>
@@ -102,7 +102,7 @@ const CreateAccount = () => {
                         </div>
                     </div>
                     <div class="d-flex justify-content-center">
-                        <button type="submit" class="btn btn-success mx-auto">Submit</button>
+                        <button type="submit" class="btn btn-dark mx-auto">Create</button>
                     </div>
                 </form>
             </div>
