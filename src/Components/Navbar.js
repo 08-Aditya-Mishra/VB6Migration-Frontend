@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
+import './style.css';
 
 const Navbar = () => {
     return (
         <>
-          
             <nav class="navbar navbar-expand-lg" style={{ backgroundColor: "#d3d3d3" }}>
                 <div class="container-fluid">
                     <a class="navbar-brand" href="#">My Bank</a>
@@ -13,28 +13,22 @@ const Navbar = () => {
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                <a class="nav-link active" href="/" aria-current="page">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Add New Account</a>
+                                <a class="nav-link" href="/createaccount">Add New Account</a>
                             </li>
-
-                            
-                           
-                               
-                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/deposit">Deposit</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Update port</a>
+                            </li>
                         </ul>
-                            <div class="d-flex">
-                                <Link to="login" class="btn btn-outline-success nav-link p-2">login</Link>
-                            </div>
-                        {/* <form class="d-flex" role="search">
-                            <button class="btn btn-outline-success" type="submit"><Link to="login" class="btn btn-outline-success nav-link">Login</Link></button>
-                        </form> */}
-
                     </div>
                 </div>
             </nav>
-            
+
         </>
     )
 }
