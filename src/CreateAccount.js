@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Navbar from './Navbar';
+import { toast } from 'react-toastify';
+
 
 const CreateAccount = () => {
 
@@ -14,8 +16,8 @@ const CreateAccount = () => {
         fingerprintID: "",
         sms: "",
         smsPort: ""
-
     })
+
     function handle(e) {
         const newdata = { ...data }
         newdata[e.target.id] = e.target.value
@@ -27,9 +29,27 @@ const CreateAccount = () => {
         axios.post('http://localhost:5058/api/Account', data)
             .then(response => {
                 console.log(response)
+                toast.success("Account created successfully!", {
+                    position: toast.POSITION.TOP_CENTER
+                });
+                setData({
+                    accountName: "",
+                    amount: "",
+                    address: "",
+                    phoneNo: "",
+                    passport: "",
+                    accountType: "",
+                    fingerprintID: "",
+                    sms: "",
+                    smsPort: ""
+                })
+                
             })
             .catch(error => {
                 console.log(error)
+                toast.error("Failed to create account", {
+                    position: toast.POSITION.TOP_CENTER
+                });
             })
         console.log(data)
     }

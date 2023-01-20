@@ -18,7 +18,7 @@ function Navbar(){
     
           method: "delete",
     
-          url: "https://localhost:7286/api/Admin/logout",
+          url: "http://localhost:5058/api/Admin/logout",
     
           headers: {
     
@@ -31,7 +31,7 @@ function Navbar(){
         }).then(() => {
     
           localStorage.removeItem("accessToken");
-    
+          console.log(localStorage)
           setCurrentUser(null);
     
         });

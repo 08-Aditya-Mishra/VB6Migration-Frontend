@@ -17,7 +17,7 @@ function Login()
   }
   const handleApi = (e) => {
     console.log({userName, password})
-    axios.post('https://localhost:7286/api/Admin/login',{
+    axios.post('http://localhost:5058/api/Admin/login',{
       username : userName,
       password : password
     })

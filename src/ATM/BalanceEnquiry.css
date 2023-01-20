@@ -1,0 +1,18 @@
+.table-structure {
+    width: 400px;
+    margin-top: 50px;
+    margin-left: 450px;
+    border-collapse: collapse;
+}
+
+.table-header {
+    background-color: #3f51b5;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.table-structure td {
+    padding: 10px;
+    text-align: center;
+}
