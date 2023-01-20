@@ -9,21 +9,22 @@ function Login()
   const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
   const navigate = useNavigate();
-
   const handleUserName = (e) => {
     setUserName(e.target.value)
   }
   const handlePassword = (e) => {
     setPassword(e.target.value)
   }
-  const handleApi = () => {
+  const handleApi = (e) => {
     console.log({userName, password})
     axios.post('https://localhost:7286/api/Admin/login',{
       username : userName,
       password : password
     })
     .then(result => {
-      console.log(result.status)
+      console.log(result)
+      localStorage.setItem("accessToken",result.data.accessToken);
+      console.log(localStorage);
       let auth = result.status
       if(auth === 200)
       {
@@ -34,14 +35,14 @@ function Login()
       console.log(error)
       alert('Invalid Credentials')
     })
-  }
+   }
     return (
         <>
-                <form className="mt-6 container col-sm-4 p-5" style={{marginTop:"100px",border:"1px solid black"}}>
+                <div className="mt-6 container col-sm-4 p-5" style={{marginTop:"100px",border:"1px solid black"}}>
                 <h2>Login Here</h2>
                     <div className="mb-3">
                         <label for="exampleInputEmail1" className="form-label">Username</label>
-                        <input value = {userName} onChange = {handleUserName} type = "text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
+                        <input value = {userName} onChange = {handleUserName} type = "text" className="form-control" id="exampleInputEmail1"/>
                         
                         
                     </div>
@@ -50,10 +51,8 @@ function Login()
                         <input value = {password} onChange = {handlePassword} type = "password" className="form-control" id="exampleInputPassword1"/>
                         
                     </div>
-                    <div className="d-grid gap-2 d-md-block">
-                    <button onClick={handleApi} type="submit"  className="btn btn-dark"> Login</button>
-                    </div>
-                </form>
+                    <button onClick={handleApi}  className="btn btn-dark"> Login</button>
+                </div>
            
         </>
     )
