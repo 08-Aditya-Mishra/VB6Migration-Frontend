@@ -51,7 +51,7 @@ const MtnTransferReceiver = () => {
     }
 
     const handleEnter = () => {
-        axios.get('http://localhost:5058/api/Account/' + receiverAccountNo)
+        axios.get('http://localhost:5178/api/Account/' + receiverAccountNo)
             .then(response => {
                 const accounts = response.data;
                 console.log(accounts)

@@ -16,7 +16,7 @@ function Navbar() {
 
             method: "delete",
 
-            url: "http://localhost:5058/api/Admin/logout",
+            url: "http://localhost:5178/api/Admin/logout",
 
             headers: {
                 Authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -38,12 +38,12 @@ function Navbar() {
 
     return (
         <div className="navbar-bg">
-            <nav class="navbar navbar-expand-lg" style={{ backgroundColor: "#0047AB" }}>
+            <nav class="navbar navbar-expand-lg" style={{ backgroundColor: "#00003f" }}>
                 <div class="container-fluid">
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
+                            <li class="nav-item" >
                                 <a class="nav-link active" href="/" aria-current="page">Home</a>
                             </li>
                             <li class="nav-item">
@@ -57,12 +57,11 @@ function Navbar() {
                             </li>
                         </ul>
                         <span class="navbar-text">
-                            <button onClick={handleLogout} class="btn btn-outline-dark" type="submit">Log Out</button>
+                            <button onClick={handleLogout} class="btn btn-outline-light" type="submit">Log Out</button>
                         </span>
                     </div>
                 </div>
             </nav>
-
         </div>
     )
 }

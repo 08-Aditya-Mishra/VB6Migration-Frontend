@@ -18,10 +18,10 @@
     height: 98px;
     margin-block-end: 100%;
     background-color: green;
-    color: white;
+    color: rgb(255, 255, 255);
     text-align: center;
-    
   }
+  
   .background{
     background-color: rgb(174, 131, 75);
   }

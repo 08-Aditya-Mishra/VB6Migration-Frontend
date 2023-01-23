@@ -53,12 +53,12 @@ const Withdraw = () => {
     }
 
     const handleEnter = () => {
-        axios.post('http://localhost:5058/Transaction/withdraw', { accountNo: accountNo, transactionAmount: transactionAmount })
+        axios.post('http://localhost:5178/Transaction/withdraw', { accountNo: accountNo, transactionAmount: transactionAmount })
 
             .then(response => {
                 const accounts = response.data;
                 if (accounts) {
-                    showNotification('success', "Account Number Verified: " + accountNo + " and Amount: Rs." + transactionAmount + " was withdrawn");
+                    showNotification('success', "Account Number Verified: " + accountNo + " and Amount: ₹" + transactionAmount + " was withdrawn");
                 } else {
                     showNotification('error', "Invalid Account Number or Amount, Please enter valid Account Number or Amount.");
                 }

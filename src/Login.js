@@ -33,9 +33,14 @@ function Login() {
   const handlePassword = (e) => {
     setPassword(e.target.value)
   }
+
+  const handleCancel = () => {
+    navigate('/')
+  }
+  
   const handleApi = (e) => {
     console.log({ userName, password })
-    axios.post('http://localhost:5058/api/Admin/login', {
+    axios.post('http://localhost:5178/api/Admin/login', {
       username: userName,
       password: password
     })
@@ -56,18 +61,19 @@ function Login() {
   }
   return (
     <div className="loginBG">
-      <div className="mt-6 container col-sm-4 p-5" style={{ marginTop: "100px", border: "1px solid black" }}>
-        <div className="h2-color">Login Here</div>
+      <div className="mt-6 container col-sm-4 p-5" style={{ backgroundColor:'#FFFFFF', marginTop: "100px", border: "1px solid black" }}>
+        <h2>Login Here</h2>
         <div className="mb-3">
-          <label for="exampleInputEmail1" className="form-label">Username</label>
+          <label for="exampleInputEmail1" className="form-label-login">Username</label>
           <input value={userName} onChange={handleUserName} type="text" className="form-control" id="exampleInputEmail1" />
         </div>
         <div className="mb-3">
-          <label for="exampleInputPassword1" className="form-label">Password</label>
+          <label for="exampleInputPassword1" className="form-label-login">Password</label>
           <input value={password} onChange={handlePassword} type="password" className="form-control" id="exampleInputPassword1" />
 
         </div>
-        <button onClick={handleApi} className="btn btn-dark"> Login</button>
+        <button onClick={handleApi} className="btn btn-light"> Login</button>&nbsp;&nbsp;
+        <button onClick={handleCancel} className="btn btn-dark"> Cancel</button>
       </div>
     </div>
   )

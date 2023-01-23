@@ -37,7 +37,7 @@ const BalanceEnquiry = () => {
     useEffect(() => {
         var accountNo = location.state;
         setAccountNo(accountNo);
-        axios.get('http://localhost:5058/api/Account/' + accountNo)
+        axios.get('http://localhost:5178/api/Account/' + accountNo)
             .then(response => {
                 const account = response.data[0];
                 if (account) {

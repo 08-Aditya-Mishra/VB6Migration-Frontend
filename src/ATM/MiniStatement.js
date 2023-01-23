@@ -37,7 +37,7 @@ const MiniStatement = () => {
     useEffect(() => {
         var accountNo = location.state;
         setAccountNo(accountNo);
-        axios.get('http://localhost:5058/Transaction/' + accountNo)
+        axios.get('http://localhost:5178/Transaction/' + accountNo)
             .then(response => {
                 const accounts = response.data;
                 if (accounts) {
@@ -73,7 +73,7 @@ const MiniStatement = () => {
                                 <tr key={index}>
                                     <td>{transaction.date}</td>
                                     <td>{transaction.transactionType}</td>
-                                    <td>{transaction.transactionAmount}</td>
+                                    <td>{new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(transaction.transactionAmount)}</td>
                                 </tr>
                             ))}
                         </tbody>

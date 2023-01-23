@@ -42,7 +42,7 @@ const CreateAccount = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        axios.post('http://localhost:5058/api/Account', data)
+        axios.post('http://localhost:5178/api/Account', data)
             .then(response => {
                 showNotification('success', 'Congratulations, your account is created successfully');
                 setData({

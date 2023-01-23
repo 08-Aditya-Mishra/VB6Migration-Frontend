@@ -36,16 +36,16 @@ const Deposit = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        axios.post('http://localhost:5058/Transaction/deposit', data)
+        axios.post('http://localhost:5178/Transaction/deposit', data)
             .then(response => {
-                showNotification('success', "Amount of Rs."+ data.transactionAmount +" has been successfully deposited into account number "+data.accountNo+".");
+                showNotification('success', "Amount of ₹"+ data.transactionAmount +" has been successfully deposited into account number "+data.accountNo+".");
                 setData({
                     accountNo: "",
                     transactionAmount: "",
                 })
             })
             .catch(error => {
-                showNotification('error', "Amount of Rs."+ data.transactionAmount +" was not successfully deposited into account number "+data.accountNo+".");
+                showNotification('error', "Amount of ₹"+ data.transactionAmount +" was not successfully deposited into account number "+data.accountNo+".");
             })
         console.log(data)
     }
