@@ -1,9 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import './App.css';
 import Login from './Login';
-import Deposit from './Bank/depost_1';
+import Deposit from './depost_1';
 import Home from "./Home";
-import CreateAccount from "./Bank/CreateAccount";
+import CreateAccount from "./CreateAccount";
 import Navbar from "./Navbar";
 import DialKeypad from "./ATM/DialKeypad";
 import Withdraw from "./ATM/Withdraw";

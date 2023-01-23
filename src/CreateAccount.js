@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import Navbar from '../Navbar';
+import Navbar from './Navbar';
 import './CreateAccount.css'
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import NotificationManager from 'react-notifications/lib/NotificationManager';
 
 const CreateAccount = () => {
