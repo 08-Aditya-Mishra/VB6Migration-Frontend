@@ -7,45 +7,40 @@ import axios from "axios";
 
 
 
-function Navbar(){
+function Navbar() {
     const { currentUser, setCurrentUser } = useContext(UserContext);
     const navigate = useNavigate();
     const handleLogout = async (e) => {
-
         e.preventDefault();
-    
         await axios({
-    
-          method: "delete",
-    
-          url: "http://localhost:5058/api/Admin/logout",
-    
-          headers: {
-    
-            Authorization: `bearer ${localStorage.getItem("accessToken")}`,
-    
-            "Content-Type": "application/json",
-    
-          },
-    
+
+            method: "delete",
+
+            url: "http://localhost:5058/api/Admin/logout",
+
+            headers: {
+                Authorization: `bearer ${localStorage.getItem("accessToken")}`,
+                "Content-Type": "application/json",
+            },
+
         }).then(() => {
-    
-          localStorage.removeItem("accessToken");
-          console.log(localStorage)
-          setCurrentUser(null);
-    
+
+            localStorage.removeItem("accessToken");
+            console.log(localStorage)
+            setCurrentUser(null);
+
         });
-    
+
         navigate("/Login");
-    
-      };
-      
-    
+
+    };
+
+
     return (
         <div className="navbar-bg">
-            <nav class="navbar navbar-expand-lg" style={{ backgroundColor: "#d3d3d3" }}>
+            <nav class="navbar navbar-expand-lg" style={{ backgroundColor: "#0047AB" }}>
                 <div class="container-fluid">
-                    
+
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
@@ -62,8 +57,8 @@ function Navbar(){
                             </li>
                         </ul>
                         <span class="navbar-text">
-                        <button onClick={handleLogout} class="btn btn-outline-success" type="submit">Log Out</button>
-      </span>
+                            <button onClick={handleLogout} class="btn btn-outline-dark" type="submit">Log Out</button>
+                        </span>
                     </div>
                 </div>
             </nav>

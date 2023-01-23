@@ -60,7 +60,7 @@ const LandingPage = () => {
                 <div className='buttonPosi'>
                     <button onClick={handleClickWithdraw} className="btn btn-dark m-1">Withdraw</button>
                     <button onClick={handleClickBalance} className="btn btn-dark m-1">Balance Enquiry</button>
-                    <button onClick={handleClickMTN}   className="btn btn-dark m-1">MTN top up</button>
+                    <button onClick={handleClickMTN}   className="btn btn-dark m-1">Bank Transfer</button>
                     <button onClick={handleClickStatement} className="btn btn-dark m-1">Mini Statement</button>
                     <button onClick={handleCancel} className="btn btn-dark m-1">Cancel</button>
                 </div>

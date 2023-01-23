@@ -41,6 +41,7 @@ const ProgressBar = () => {
     }, 20);
     return () => clearInterval(intervalId);
   }, [])
+  
   return (
     <body className="background">
       <div className="progress-bar-container">

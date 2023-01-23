@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Navbar from './Navbar';
+import './deposit.css'
 import { Link } from 'react-router-dom';
 import NotificationManager from 'react-notifications/lib/NotificationManager';
 
@@ -51,9 +52,12 @@ const Deposit = () => {
 
     return (
         <>
-            <Navbar />
-            <form onSubmit={handleSubmit} className="mt-5 container col-sm-4 p-5 " style={{ marginTop: "100px", border: "1px solid black" }}>
-                <h2 className="mb-3">Account Deposit</h2>
+        <div>
+        <Navbar />
+        </div>
+            <div className='deposit-bg'>
+            <form onSubmit={handleSubmit} className="mt-5 container col-sm-4 p-5 " style={{ backgroundColor:'#FFFFFF', marginTop: "100px", border: "1px solid black" }}>
+                <h2 className="mb-3">Deposit Amount</h2>
                 <div class="mb-3">
                     <label for="accountNo" class="form-label">Account Number</label>
                     <input onChange={(e) => handle(e)} value={data.accountNo} type="number" class="form-control" id="accountNo" placeholder="Enter Account No" required />
@@ -68,6 +72,7 @@ const Deposit = () => {
                 <button class="btn btn-dark m-4">Cancel</button>
                 </Link>
             </form>
+            </div>
         </>
     )
 
