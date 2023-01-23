@@ -1,19 +1,16 @@
-import React, { useState } from 'react';
-import { useContext } from 'react';
+import React from 'react'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { useState, useEffect } from 'react';
+import './MtnTransferReceiver.css'
 import axios from 'axios';
-import './withdraw.css';
-import { useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
 import NotificationManager from 'react-notifications/lib/NotificationManager';
 
-const Withdraw = () => {
+const MtnTransferAmount = () => {
 
-    const [transactionAmount, setAmount] = useState(0);
+    const [receiverAccountNo, setReceiverAccountNo] = useState(0);
     const [accountNo, setAccountNo] = useState(0);
-    const location = useLocation();
-    const navigate = useNavigate();
+    const [transactionAmount, setTransactionAmount] = useState(0);
 
-    //Notifications 
     const showNotification = (type, message) => {
         switch (type) {
             case 'success':
@@ -29,15 +26,17 @@ const Withdraw = () => {
                 NotificationManager.info(message);
         }
     }
+    const navigate = useNavigate();
+    const location = useLocation();
 
-    useEffect(() => {
-        var accNo = location.state;
-        setAccountNo(accNo);
+    useEffect(() => {     
+        const { accountNo, receiverAccountNo } = location.state;
+        setAccountNo(accountNo);
+        setReceiverAccountNo(receiverAccountNo);
     }, [])
 
-
     function handleClick(e) {
-        setAmount(Number(transactionAmount + e.target.innerHTML));
+        setTransactionAmount(Number(transactionAmount + e.target.innerHTML));
     }
 
     const handleCancel = () => {
@@ -45,40 +44,41 @@ const Withdraw = () => {
     }
 
     const handleClear = () => {
-        setAmount('');
+        setTransactionAmount('');
     }
 
     const handleBackspace = () => {
-        setAmount(Math.floor(transactionAmount / 10))
+        setTransactionAmount(Math.floor(receiverAccountNo / 10));
     }
 
     const handleEnter = () => {
-        axios.post('http://localhost:5058/Transaction/withdraw', { accountNo: accountNo, transactionAmount: transactionAmount })
-
+        axios.post('http://localhost:5058/Transaction/transfer/',
+            { sendersAccountNo: accountNo, receiversAccountNo: receiverAccountNo, transactionAmount: transactionAmount })
             .then(response => {
-                const accounts = response.data;
-                if (accounts) {
-                    showNotification('success', "Account Number Verified: " + accountNo + " and Amount: Rs." + transactionAmount + " was withdrawn");
-                } else {
-                    showNotification('error', "Invalid Account Number or Amount, Please enter valid Account Number or Amount.");
+                if (response.status === 200) {
+                    setTransactionAmount('');
+                    showNotification('success', "Account Number Verified: " + receiverAccountNo + " and Amount: Rs." + transactionAmount + " was transferred");
+                }
+                else {
+                    showNotification('error', "Transfer failed: "+response.status);
                 }
             })
             .catch(error => {
-                showNotification('error', "An error occurred. Please try again later.");
+                showNotification('info',"An error occurred. Please try again later.");
             });
     }
 
     return (
-        <div className='withdrawBG'>
-            <div className='withdraw-body'>
-                <div className='withdraw-header withdraw-header-style'>
-                    <h3>Enter Withdrawal Amount</h3>
+        <div>
+            <div className='transfer-body'>
+                <div className='transfer-header'>
+                    <h3>Enter Amount to Transfer</h3>
                 </div>
-                <div className="withdraw-container">
-                    <div className="withdraw-output">
+                <div className="transfer-container">
+                    <div className="transfer-output">
                         <input type="text" value={transactionAmount} disabled />
                     </div>
-                    <div className="withdraw">
+                    <div className="transfer">
                         <button onClick={handleClick}>1</button>
                         <button onClick={handleClick}>2</button>
                         <button onClick={handleClick}>3</button>
@@ -99,7 +99,7 @@ const Withdraw = () => {
                 </div>
             </div>
         </div>
-    );
+    )
 }
 
-export default Withdraw;
+export default MtnTransferAmount

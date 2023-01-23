@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
-import { useContext } from 'react';
+import React from 'react'
+import { Link, useNavigate,useLocation } from 'react-router-dom'
+import { useState, useEffect } from 'react';
+import './MtnTransferReceiver.css'
 import axios from 'axios';
-import './withdraw.css';
-import { useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
 import NotificationManager from 'react-notifications/lib/NotificationManager';
 
-const Withdraw = () => {
+const MtnTransferReceiver = () => {
 
-    const [transactionAmount, setAmount] = useState(0);
+    const [receiverAccountNo, setReceiverAccountNo] = useState(0);
     const [accountNo, setAccountNo] = useState(0);
-    const location = useLocation();
     const navigate = useNavigate();
+    const location = useLocation();
 
     //Notifications 
     const showNotification = (type, message) => {
@@ -35,32 +34,38 @@ const Withdraw = () => {
         setAccountNo(accNo);
     }, [])
 
-
-    function handleClick(e) {
-        setAmount(Number(transactionAmount + e.target.innerHTML));
+    function handleClick(e) {   
+        setReceiverAccountNo(Number(receiverAccountNo + e.target.innerHTML));
     }
 
     const handleCancel = () => {
-        navigate("/landing", { state: accountNo });
+        navigate('/', { state: 0 });
     }
 
     const handleClear = () => {
-        setAmount('');
+        setReceiverAccountNo('');
     }
 
     const handleBackspace = () => {
-        setAmount(Math.floor(transactionAmount / 10))
+        setReceiverAccountNo(Math.floor(receiverAccountNo / 10));
     }
 
     const handleEnter = () => {
-        axios.post('http://localhost:5058/Transaction/withdraw', { accountNo: accountNo, transactionAmount: transactionAmount })
-
+        axios.get('http://localhost:5058/api/Account/' + receiverAccountNo)
             .then(response => {
                 const accounts = response.data;
-                if (accounts) {
-                    showNotification('success', "Account Number Verified: " + accountNo + " and Amount: Rs." + transactionAmount + " was withdrawn");
-                } else {
-                    showNotification('error', "Invalid Account Number or Amount, Please enter valid Account Number or Amount.");
+                console.log(accounts)
+                if (accounts.length > 0) {
+                    if(accountNo == receiverAccountNo){
+                        showNotification('error', "You cannot transfer funds to your own account. Please enter a valid recipient's account number.");
+                    }
+                    else{
+                    navigate('/transferamount', { state: { accountNo: accountNo, receiverAccountNo: receiverAccountNo } });
+                    showNotification('success', "Recepient's account number verified");
+                    }
+                } 
+                else {
+                    showNotification('info', 'Invalid Account Number: {'+receiverAccountNo+'} Please enter a valid account number for the recipient');
                 }
             })
             .catch(error => {
@@ -69,16 +74,16 @@ const Withdraw = () => {
     }
 
     return (
-        <div className='withdrawBG'>
-            <div className='withdraw-body'>
-                <div className='withdraw-header withdraw-header-style'>
-                    <h3>Enter Withdrawal Amount</h3>
+        <div>
+            <div className='transfer-body'>
+                <div className='transfer-header'>
+                    <h3>Enter Receiver's Account Number</h3>
                 </div>
-                <div className="withdraw-container">
-                    <div className="withdraw-output">
-                        <input type="text" value={transactionAmount} disabled />
+                <div className="transfer-container">
+                    <div className="transfer-output">
+                        <input type="text" value={receiverAccountNo} disabled />
                     </div>
-                    <div className="withdraw">
+                    <div className="transfer">
                         <button onClick={handleClick}>1</button>
                         <button onClick={handleClick}>2</button>
                         <button onClick={handleClick}>3</button>
@@ -99,7 +104,7 @@ const Withdraw = () => {
                 </div>
             </div>
         </div>
-    );
+    )
 }
 
-export default Withdraw;
+export default MtnTransferReceiver

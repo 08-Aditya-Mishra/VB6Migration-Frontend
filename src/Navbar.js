@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import './style.css';
+import './Navbar.css';
 import { useContext } from "react";
 import { UserContext } from "./user.context";
 import { useNavigate } from "react-router-dom";
@@ -42,7 +42,7 @@ function Navbar(){
       
     
     return (
-        <>
+        <div className="navbar-bg">
             <nav class="navbar navbar-expand-lg" style={{ backgroundColor: "#d3d3d3" }}>
                 <div class="container-fluid">
                     
@@ -68,7 +68,7 @@ function Navbar(){
                 </div>
             </nav>
 
-        </>
+        </div>
     )
 }
 export default Navbar;

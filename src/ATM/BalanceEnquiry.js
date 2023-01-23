@@ -4,6 +4,7 @@ import axios from 'axios';
 import './BalanceEnquiry.css'
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import NotificationManager from 'react-notifications/lib/NotificationManager';
 
 const BalanceEnquiry = () => {
     const [accountName, setAccountName] = useState(null);
@@ -11,6 +12,23 @@ const BalanceEnquiry = () => {
     const [accountNo, setAccountNo] = useState(0);
     const location = useLocation();
     const navigate = useNavigate();
+
+    //Notifications 
+    const showNotification = (type, message) => {
+        switch (type) {
+            case 'success':
+                NotificationManager.success(message);
+                break;
+            case 'warning':
+                NotificationManager.warning(message);
+                break;
+            case 'error':
+                NotificationManager.error(message);
+                break;
+            default:
+                NotificationManager.info(message);
+        }
+    }
 
     const handleClick = () => {
         navigate("/landing", { state: accountNo });
@@ -25,36 +43,38 @@ const BalanceEnquiry = () => {
                 if (account) {
                     setAccountName(account.accountName);
                     setAmount(account.amount)
-
+                    showNotification('info', 'This is your remaining amount in your account');
                 } else {
                     // show an error message
-                    alert("Invalid account number: ");
+                    showNotification('error', 'Invalid account number: '+accountNo);
                 }
             })
             .catch(error => {
                 console.log(error);
-                alert("An error occurred. Please try again later.");
+                showNotification('error', 'An error occurred. Please try again later.');
             });
-    }, []); 
+    }, []);
 
     return (
         <>
-            <table className="table-structure">
-                <tr>
-                    <th className="table-header">Balance Remaining in Account</th>
-                </tr>
-                <tr>
-                    <td>Account Name: {accountName}</td>
-                </tr>
-                <tr>
-                    <td>Account Number: {accountNo}</td>
-                </tr>
-                <tr>
-                    <td>Remaining Balance: {amount}</td>
-                </tr>
-            </table>
-            <div className="text-center mt-4">
-                <button onClick={handleClick} className="btn btn-dark">Back</button>
+            <div className='Balance-container'>
+                <table className="table-structure">
+                    <tr>
+                        <th className="table-header">Balance Remaining in Account</th>
+                    </tr>
+                    <tr>
+                        <td>Account Name: {accountName}</td>
+                    </tr>
+                    <tr>
+                        <td>Account Number: {accountNo}</td>
+                    </tr>
+                    <tr>
+                        <td>Remaining Balance: {amount}</td>
+                    </tr>
+                </table>
+                <div className="text-center mt-4">
+                    <button onClick={handleClick} className="btn btn-dark">Close</button>
+                </div>
             </div>
 
         </>

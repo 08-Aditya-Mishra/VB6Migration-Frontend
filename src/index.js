@@ -5,6 +5,9 @@ import App from './App';
 import  './style.css';
 import { BrowserRouter } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-toastify/dist/ReactToastify.css';
+import 'react-notifications/lib/notifications.css';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

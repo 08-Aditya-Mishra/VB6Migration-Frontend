@@ -1,13 +1,32 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import Navbar from './Navbar';
+import Navbar from '../Navbar';
 import { Link } from 'react-router-dom';
+import NotificationManager from 'react-notifications/lib/NotificationManager';
 
 const Deposit = () => {
     const [data, setData] = useState({
         accountNo: "",
         transactionAmount: "",
     })
+
+    //Notifications
+    const showNotification = (type, message) => {
+        switch (type) {
+            case 'success':
+                NotificationManager.success(message);
+                break;
+            case 'warning':
+                NotificationManager.warning(message);
+                break;
+            case 'error':
+                NotificationManager.error(message);
+                break;
+            default:
+                NotificationManager.info(message);
+        }
+    }
+
     function handle(e) {
         const newdata = { ...data }
         newdata[e.target.id] = e.target.value
@@ -18,10 +37,14 @@ const Deposit = () => {
         event.preventDefault()
         axios.post('http://localhost:5058/Transaction/deposit', data)
             .then(response => {
-                console.log(response)
+                showNotification('success', "Amount of Rs."+ data.transactionAmount +" has been successfully deposited into account number "+data.accountNo+".");
+                setData({
+                    accountNo: "",
+                    transactionAmount: "",
+                })
             })
             .catch(error => {
-                console.log(error)
+                showNotification('error', "Amount of Rs."+ data.transactionAmount +" was not successfully deposited into account number "+data.accountNo+".");
             })
         console.log(data)
     }

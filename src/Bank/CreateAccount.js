@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import Navbar from './Navbar';
+import Navbar from '../Navbar';
+import './CreateAccount.css'
 import { toast } from 'react-toastify';
-
+import 'react-toastify/dist/ReactToastify.css';
+import NotificationManager from 'react-notifications/lib/NotificationManager';
 
 const CreateAccount = () => {
-
     const [data, setData] = useState({
         accountName: "",
         amount: "",
@@ -18,6 +19,23 @@ const CreateAccount = () => {
         smsPort: ""
     })
 
+    //Notifications
+    const showNotification = (type, message) => {
+        switch (type) {
+            case 'success':
+                NotificationManager.success(message);
+                break;
+            case 'warning':
+                NotificationManager.warning(message);
+                break;
+            case 'error':
+                NotificationManager.error(message);
+                break;
+            default:
+                NotificationManager.info(message);
+        }
+    }
+
     function handle(e) {
         const newdata = { ...data }
         newdata[e.target.id] = e.target.value
@@ -27,11 +45,8 @@ const CreateAccount = () => {
     const handleSubmit = (event) => {
         event.preventDefault()
         axios.post('http://localhost:5058/api/Account', data)
-            .then(response => {
-                console.log(response)
-                toast.success("Account created successfully!", {
-                    position: toast.POSITION.TOP_CENTER
-                });
+            .then(response => {   
+                showNotification('success', 'Congratulations, your account is created successfully');            
                 setData({
                     accountName: "",
                     amount: "",
@@ -46,18 +61,14 @@ const CreateAccount = () => {
                 
             })
             .catch(error => {
-                console.log(error)
-                toast.error("Failed to create account", {
-                    position: toast.POSITION.TOP_CENTER
+                    showNotification('error', 'Failed to create account: '+error.message);
                 });
-            })
-        console.log(data)
     }
 
 
 
     return (
-        <>
+        <div className='create-acc-bg'>
             <Navbar />
             <div className='mt-5 container'>
                 <form onSubmit={handleSubmit} className="form-group mx-auto" style={{ width: "600px",margin: "50px", border: "1px solid black", padding: "30px" }}>
@@ -126,7 +137,7 @@ const CreateAccount = () => {
                     </div>
                 </form>
             </div>
-        </>
+        </div>
     );
 }
 

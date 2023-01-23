@@ -3,6 +3,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 }  */
+
   .landingContainer .btn {
     display: grid; 
     grid-template-columns: repeat(1, 5fr);
@@ -14,12 +15,31 @@
     top:50%
     
   }
-  .landingContainer {
-    position: absolute;
-    margin-top: 22%;
-  } 
-  
   
 
-  
+.landingContainer {
+  background-image: url('./landing_page.png');
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.buttonPosi{
+  margin-top: 16%;
+  margin-left: 5%;
+  background-color: azure;
+  width: 355px;
+
+}
+
+
+
   
