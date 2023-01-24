@@ -63,8 +63,6 @@ const CreateAccount = () => {
             });
     }
 
-
-
     return (
         <>
             <div>

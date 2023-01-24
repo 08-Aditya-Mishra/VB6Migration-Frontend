@@ -49,10 +49,10 @@ const DialKeypad = () => {
     const handleEnter = () => {
         axios.get('http://localhost:5178/api/Account/' + accountNo)
             .then(response => {
-                const accounts = response.data;
-                console.log(accounts)
-                if (accounts.length > 0) {
-                    navigate('/landing', { state: accountNo });
+                const account = response.data;
+                console.log(account)
+                if (account.length > 0) {
+                    navigate('/fingerprint', { state: accountNo });
                     showNotification('success', 'Congratulations, Account is Verified');
                 } else {
                     // show an error message

@@ -14,7 +14,7 @@ import ProgressBar from "./ATM/ProgressBar"
 import MtnTransferReceiver from "./ATM/MtnTransferReceiver"
 import MtnTransferAmount from "./ATM/MtnTransferAmount"
 import NotificationContainer from 'react-notifications/lib/NotificationContainer';
-
+import FingerPrint from "./ATM/FingerPrint";
 
 const App = () => {
 
@@ -31,6 +31,7 @@ const App = () => {
         {/* ATM Routes */}
         <Route path="/loading" element={<ProgressBar />} />
         <Route path="/keypad" element={<DialKeypad />} />
+        <Route path="/fingerprint" element={<FingerPrint />} />
         <Route path="/landing" element={<LandingPage />} />
         <Route path="/withdraw" element={<Withdraw />} />
         <Route path="/balance" element={<BalanceEnquiry />} />

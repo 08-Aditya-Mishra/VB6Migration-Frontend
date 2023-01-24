@@ -1,0 +1,51 @@
+.input-styles {
+    margin-top: 3%;
+    margin-left: 10%;
+    padding: 10px;
+    font-size: 20px;
+    border: 2px solid rgb(22, 225, 244);
+}
+input:focus {
+    border: 2px solid #6a0dd4;
+}
+
+
+.button-styles {
+    margin-top: 1%;
+    margin-left: 17%;
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: rgb(190, 8, 8);
+    color: rgb(198, 41, 41);
+    border: 2px solid #ffffff;;
+}
+
+
+
+input {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+
+.center-div {
+    background-image: url('./fingerprint.png');
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .fingerprint-header{
+    font-family: 'Georgia', serif;
+    font-size: 30px;
+    margin-top: 1%;
+    margin-left: 7%;
+  }

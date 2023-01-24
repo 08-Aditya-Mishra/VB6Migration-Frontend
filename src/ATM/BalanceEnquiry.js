@@ -76,7 +76,6 @@ const BalanceEnquiry = () => {
                     <button onClick={handleClick} className="btn btn-dark">Close</button>
                 </div>
             </div>
-
         </>
     );
 }
