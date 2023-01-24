@@ -31,7 +31,7 @@ const ProgressBar = () => {
     intervalId = setInterval(() => {
       const elapsed = Date.now() - start;
       const newPercentage = Math.round((elapsed / 3000) * 100);
-      if (newPercentage < 80) {
+      if (newPercentage < 60) {
         setPercentage(newPercentage);
       } else {
         clearInterval(intervalId);
@@ -46,7 +46,7 @@ const ProgressBar = () => {
     <body className="background">
       <div className="progress-bar-container">
         <img src={require('./atm_img.png')} className="atm-img" alt="ATM machine" />
-        <div className="progress-bar" style={{ width: `${percentage}%` }}>
+        <div className="progress-bar" style={{backgroundColor:"#00FFFF", width: `${percentage}%` }}>
           <span>{percentage}%</span>
         </div>
       </div>

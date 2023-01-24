@@ -1,5 +1,4 @@
 import React from 'react';
-import image from "./landing_page.png";
 import './LandingPage.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';

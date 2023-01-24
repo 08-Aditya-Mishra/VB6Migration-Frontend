@@ -50,7 +50,7 @@ const MiniStatement = () => {
             .catch(error => {
                 showNotification('error', 'Oops :(, Some error occured try again after some time');
             });
-    }, [accountNo])
+    }, [])
     
 
 
