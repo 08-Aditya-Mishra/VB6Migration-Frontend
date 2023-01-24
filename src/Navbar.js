@@ -27,16 +27,13 @@ function Navbar() {
             localStorage.removeItem("accessToken");
             console.log(localStorage)
             setCurrentUser(null);
-
         });
-
         navigate("/Login");
-
     };
 
 
     return (
-        <div className="navbar-bg">
+        <div className="navbar-bg" >
             <nav class="navbar navbar-expand-lg" style={{ backgroundColor: "#00003f" }}>
                 <div class="container-fluid">
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
