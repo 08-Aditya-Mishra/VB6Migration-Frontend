@@ -53,7 +53,7 @@ const Deposit = () => {
                 })
             })
             .catch(error => {
-                showNotification('error', "Amount of ₹" + data.transactionAmount + " was not successfully deposited into account number " + data.accountNo + ".");
+                showNotification('error', "Transaction of ₹" + data.transactionAmount + " to account number " + data.accountNo + " has failed. Please check your account details and try again.");
             })
         console.log(data)
     }

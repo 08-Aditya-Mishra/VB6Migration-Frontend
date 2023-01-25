@@ -13,8 +13,6 @@ const CreateAccount = () => {
         passport: "",
         accountType: "",
         fingerprintID: "",
-        sms: "",
-        smsPort: ""
     })
 
     let config = {
@@ -60,8 +58,6 @@ const CreateAccount = () => {
                     passport: "",
                     accountType: "",
                     fingerprintID: "",
-                    sms: "",
-                    smsPort: ""
                 })
 
             })
@@ -75,9 +71,9 @@ const CreateAccount = () => {
             <div>
                 <Navbar />
             </div>
-            <div className='create-acc-bg'>
+            <div className='create-acc-bg' style={{overflowY: 'scroll', maxHeight: '550px'}}>
                 <div className='mt-5 container'>
-                    <form onSubmit={handleSubmit} className="form-group mx-auto" style={{ backgroundColor: '#FFFFFF', width: "600px", margin: "50px", border: "1px solid black", padding: "30px", overflowY: 'scroll', maxHeight: '500px' }}>
+                    <form onSubmit={handleSubmit} className="form-group mx-auto" style={{ backgroundColor: '#FFFFFF', width: "600px", margin: "50px", border: "1px solid black", padding: "30px" }}>
                         <h2 className="mb-3">Create an Account</h2>
                         <div class="form-group row">
                             <label for="accountName" class="col-sm-2 col-form-label">Account Name</label>
@@ -126,7 +122,7 @@ const CreateAccount = () => {
                                 <input onChange={(e) => handle(e)} value={data.fingerprintID} type="text" class="form-control mb-3" id="fingerprintID" placeholder="Enter Fingerprint ID" required />
                             </div>
                         </div>
-                        <div class="form-group row">
+                        {/* <div class="form-group row">
                             <label for="sms" class="col-sm-2 col-form-label">SMS</label>
                             <div class="col-sm-10">
                                 <input onChange={(e) => handle(e)} value={data.sms} type="text" class="form-control mb-3" id="sms" placeholder="Enter SMS" required />
@@ -137,7 +133,7 @@ const CreateAccount = () => {
                             <div class="col-sm-10">
                                 <input onChange={(e) => handle(e)} value={data.smsPort} type="text" class="form-control mb-3" id="smsPort" placeholder="Enter SMS Port" required />
                             </div>
-                        </div>
+                        </div> */}
                         <div class="d-flex justify-content-center">
                             <button type="submit" class="btn btn-dark mx-auto">Create</button>
                         </div>

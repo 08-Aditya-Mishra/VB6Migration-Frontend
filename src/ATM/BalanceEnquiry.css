@@ -10,11 +10,14 @@
     color: white;
     text-align: center;
     padding: 20px;
+    font-size: 25px;
 }
 
 .table-structure td {
+    color: white;
     padding: 10px;
-    text-align: center;
+    text-align: left;
+    font-size: 20px;
 }
 
 .Balance-container{

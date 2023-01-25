@@ -59,18 +59,20 @@ const MiniStatement = () => {
             <div className='mini-container'>
                 <div className='miniHeader'> <h2>MiniStatements</h2></div>
                 <div className='miniHeader'> <h3>Account Number: {accountNo}</h3></div>
-                <div className="col-sm-6 table-responsive mini-statement-container">
+                <div className="col-sm-6 table-responsive mini-statement-container" style={{width:"1000px"}}>
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>Date</th>
-                                <th>Type</th>
-                                <th>Amount</th>
+                                <th class="column-size">Transaction ID</th>
+                                <th class="column-size">Date</th>
+                                <th class="column-size1" >Transaction Type</th>
+                                <th class="column-size1">Amount</th>
                             </tr>
                         </thead>
                         <tbody>
                             {transactions.map((transaction, index) => (
                                 <tr key={index}>
+                                    <td>{transaction.id}</td>
                                     <td>{transaction.date}</td>
                                     <td>{transaction.transactionType}</td>
                                     <td>{new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(transaction.transactionAmount)}</td>

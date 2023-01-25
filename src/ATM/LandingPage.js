@@ -57,11 +57,11 @@ const LandingPage = () => {
         <>
             < div className="landingContainer">
                 <div className='buttonPosi'>
-                    <button onClick={handleClickWithdraw} className="btn btn-dark m-1">Withdraw</button>
-                    <button onClick={handleClickBalance} className="btn btn-dark m-1">Balance Enquiry</button>
-                    <button onClick={handleClickMTN}   className="btn btn-dark m-1">Bank Transfer</button>
-                    <button onClick={handleClickStatement} className="btn btn-dark m-1">Mini Statement</button>
-                    <button onClick={handleCancel} className="btn btn-dark m-1">Cancel</button>
+                    <button style={{width:"322px",height:"43px"}} onClick={handleClickWithdraw}  className="btn btn-dark m-1 ">Withdraw</button>
+                    <button style={{width:"322px",height:"43px"}} onClick={handleClickBalance} className="btn btn-dark m-1">Balance Enquiry</button>
+                    <button style={{width:"322px",height:"43px"}} onClick={handleClickMTN}   className="btn btn-dark m-1">Bank Transfer</button>
+                    <button style={{width:"322px",height:"43px"}} onClick={handleClickStatement} className="btn btn-dark m-1">Mini Statement</button>
+                    <button style={{width:"322px",height:"43px"}} onClick={handleCancel} className="btn btn-dark m-1">Cancel</button>
                 </div>
             </div>
         </>

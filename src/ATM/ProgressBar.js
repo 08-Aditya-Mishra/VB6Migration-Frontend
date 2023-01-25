@@ -23,7 +23,13 @@ const ProgressBar = () => {
         NotificationManager.info(message);
     }
   }
-
+  function sleep(milliseconds) {
+    const date = Date.now();
+    let currentDate = null;
+    do {
+      currentDate = Date.now();
+    } while (currentDate - date < milliseconds);
+  }
   useEffect(() => {
     let intervalId = null;
     const start = Date.now();
@@ -31,14 +37,16 @@ const ProgressBar = () => {
     intervalId = setInterval(() => {
       const elapsed = Date.now() - start;
       const newPercentage = Math.round((elapsed / 3000) * 100);
-      if (newPercentage < 60) {
+      if (newPercentage <= 100) {
         setPercentage(newPercentage);
-      } else {
-        clearInterval(intervalId);
-        setPercentage(100);
+      } 
+      
+      else
+      { 
         navigate('/keypad');
       }
-    }, 20);
+     
+    }, 10);
     return () => clearInterval(intervalId);
   }, [])
   
@@ -46,7 +54,7 @@ const ProgressBar = () => {
     <body className="background">
       <div className="progress-bar-container">
         <img src={require('./atm_img.png')} className="atm-img" alt="ATM machine" />
-        <div className="progress-bar" style={{backgroundColor:"#00FFFF", width: `${percentage}%` }}>
+        <div className="progress-bar" style={{backgroundColor:'green' ,width: `${percentage}%`,color:'white' }}>
           <span>{percentage}%</span>
         </div>
       </div>

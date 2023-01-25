@@ -47,9 +47,9 @@ function Navbar() {
                             <li class="nav-item">
                                 <a class="nav-link active" style={{color: 'white'}} href="/deposit">Deposit</a>
                             </li>
-                            <li class="nav-item">
+                            {/* <li class="nav-item">
                                 <a class="nav-link disabled" style={{color: 'white'}} href="#">Update port</a>
-                            </li>
+                            </li> */}
                         </ul>
                         <span class="navbar-text">
                             <button onClick={handleLogout} class="btn btn-outline-light" type="submit">Log Out</button>
