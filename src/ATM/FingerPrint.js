@@ -4,7 +4,8 @@ import { Link, useNavigate, useLocation } from 'react-router-dom'
 import NotificationManager from 'react-notifications/lib/NotificationManager';
 import { useState, useEffect } from 'react';
 import CryptoJS from 'crypto-js';
-import './FingerPrint.css'
+import './FingerPrint.css';
+
 
 const FingerPrint = () => {
 
@@ -13,6 +14,7 @@ const FingerPrint = () => {
 
     const [inputValue, setInputValue] = useState('');
     const [accountNo, setAccountNo] = useState(0);
+    const [maskedValue, setMaskedValue] = useState('');
 
     //Notifications 
     const showNotification = (type, message) => {
@@ -38,11 +40,13 @@ const FingerPrint = () => {
 
     function handleChange(e) {
         setInputValue(e.target.value);
-    }
+      }
 
     const handleEnter = () => {
         axios.get('http://localhost:5178/api/Account/' + accountNo)
             .then(response => {
+                console.log(maskedValue)
+                console.log(inputValue)
                 var account = response.data
                 console.log(account.length)
                 if (account.length > 0) {
@@ -53,6 +57,8 @@ const FingerPrint = () => {
                     if (inputHash == account[0].fingerprintID) {
                         navigate('/landing', { state: accountNo });
                         showNotification('success', 'Congratulations, FingerprintID is Verified');
+                        setInputValue('');
+                        setMaskedValue('');
                     }
                     else {
                         showNotification('error', 'Please, Enter Valid FingerprintID!');
@@ -71,14 +77,14 @@ const FingerPrint = () => {
 
     return (
         <>
-        <div className='center-div'>
-            <div className='fingerprint-header'>Enter Fingerprint ID here</div>
-            <div>
-                <input type="text" value={inputValue} onChange={handleChange} className="input-styles" />
-            </div>
-            <div>
-                <button onClick={handleEnter} className="btn btn-dark button-styles">Submit</button>
-            </div>
+            <div className='center-div'>
+                <div className='fingerprint-header'>Enter Fingerprint ID here</div>
+                <div>
+                    <input type="password" value={inputValue} onChange={e => handleChange(e)} className="input-styles" />
+                </div>
+                <div>
+                    <button onClick={handleEnter} className="btn btn-dark button-styles">Submit</button>
+                </div>
             </div>
 
         </>
