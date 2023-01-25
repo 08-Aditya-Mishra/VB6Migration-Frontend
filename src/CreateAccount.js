@@ -17,6 +17,13 @@ const CreateAccount = () => {
         smsPort: ""
     })
 
+    let config = {
+        headers: {
+            Authorization: `bearer ${localStorage.getItem("accessToken")}`,
+            "Content-Type": "application/json",
+        }
+    }
+
     //Notifications
     const showNotification = (type, message) => {
         switch (type) {
@@ -42,7 +49,7 @@ const CreateAccount = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        axios.post('http://localhost:5178/api/Account', data)
+        axios.post('http://localhost:5178/api/Account', data, config)
             .then(response => {
                 showNotification('success', 'Congratulations, your account is created successfully');
                 setData({
@@ -70,7 +77,7 @@ const CreateAccount = () => {
             </div>
             <div className='create-acc-bg'>
                 <div className='mt-5 container'>
-                    <form onSubmit={handleSubmit} className="form-group mx-auto" style={{ backgroundColor: '#FFFFFF', width: "600px", margin: "50px", border: "1px solid black", padding: "30px", overflowY: 'scroll', maxHeight: '500px'}}>
+                    <form onSubmit={handleSubmit} className="form-group mx-auto" style={{ backgroundColor: '#FFFFFF', width: "600px", margin: "50px", border: "1px solid black", padding: "30px", overflowY: 'scroll', maxHeight: '500px' }}>
                         <h2 className="mb-3">Create an Account</h2>
                         <div class="form-group row">
                             <label for="accountName" class="col-sm-2 col-form-label">Account Name</label>
