@@ -44,7 +44,7 @@ const Deposit = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        axios.post('http://localhost:5178/Transaction/deposit', data,config)
+        axios.post('https://localhost:7286/Transaction/deposit', data,config)
             .then(response => {
                 showNotification('success', "Amount of ₹" + data.transactionAmount + " has been successfully deposited into account number " + data.accountNo + ".");
                 setData({
@@ -64,22 +64,43 @@ const Deposit = () => {
                 <Navbar />
             </div>
             <div className='deposit-bg'>
-                <form onSubmit={handleSubmit} className="mt-5 container col-sm-4 p-5 " style={{ backgroundColor: '#FFFFFF', marginTop: "100px", border: "1px solid black" }}>
-                    <h2 className="mb-3">Deposit Amount</h2>
-                    <div class="mb-3">
-                        <label for="accountNo" class="form-label">Account Number</label>
-                        <input onChange={(e) => handle(e)} value={data.accountNo} type="number" class="form-control" id="accountNo" placeholder="Enter Account No" required />
+            <div className='mt-5 container'>
+                <form onSubmit={handleSubmit} className="form-group mx-auto " style={{ backgroundColor: '#34568B', width: "600px", margin: "50px", padding: "30px"}}>
+                <h2 className="mb-3 text-white"><center>Account Deposit</center></h2>
+                <br></br>
 
-                    </div>
-                    <div class="mb-3">
-                        <label for="TransactionAmount" class="form-label">Transaction Amount</label>
-                        <input onChange={(e) => handle(e)} value={data.transactionAmount} type="number" class="form-control" id="transactionAmount" placeholder="Enter transaction Amount" required />
-                    </div>
-                    <button type="submit" class="btn btn-light ">Deposit</button>
-                    <Link to="/navbar">
+                <div class="form-group row">
+                        <div class="col-4">
+                        <label for="accountName" class="text-white">Account Number:</label>
+                        </div>
+                        <div class="col-8">
+                        <input onChange={(e) => handle(e)} value={data.accountNo} type="number" class="form-control mb-3" id="accountNo" placeholder="Account Number" required />
+                        </div>
+                        </div>
+
+                        <div class="form-group row">
+                        <div class="col-4">
+                        <label for="TransactionAmount" class="text-white">Amount:</label>
+                        </div>
+                        <div class="col-8">
+                        <input onChange={(e) => handle(e)} value={data.transactionAmount} type="number" class="form-control mb-3" id="transactionAmount" placeholder="Amount" required />
+                        </div>
+                        </div>
+
+                        <br></br>
+
+
+
+                        <div class="d-flex justify-content-center"><center>
+                            <button type="submit" class="btn btn-dark mx-auto">Deposit</button>
+                        
+                        <Link to="/navbar">
                         <button class="btn btn-dark m-4">Cancel</button>
-                    </Link>
+                    </Link></center>
+                    </div>
+                    
                 </form>
+                </div>
             </div>
         </>
     )
