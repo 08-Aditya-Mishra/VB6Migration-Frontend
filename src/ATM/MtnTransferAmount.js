@@ -52,12 +52,12 @@ const MtnTransferAmount = () => {
     }
 
     const handleEnter = () => {
-        axios.post('http://localhost:5178/Transaction/transfer/',
+        axios.post('https://localhost:7286/Transaction/transfer/',
             { sendersAccountNo: accountNo, receiversAccountNo: receiverAccountNo, transactionAmount: transactionAmount })
             .then(response => {
                 if (response.status === 200) {
                     setTransactionAmount('');
-                    showNotification('success', "Account Number Verified: " + receiverAccountNo + " and Amount: ₹" + transactionAmount + " was transferred");
+                    showNotification('success', " Amount: ₹" + transactionAmount + " was transferred to Account Number: " + receiverAccountNo + "Successfully!");
                 }
                 else {
                     showNotification('error', "Transfer failed: "+response.status);
