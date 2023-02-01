@@ -1,28 +1,37 @@
 .progress-bar-container {
-    position: relative;
-
-  }
+  position: relative;
+  max-width: 500px;
   
-  .atm-img {
-    position: absolute;
-    top: 0;
-    left: 0;
+
 }
-  
-  .progress-bar {
-    position:absolute;
-    max-width: 488px;
-    top: 10px;
-    left: 450px;
-    width: 50px;
-    height: 94px;
-    margin-block-end: 100%;
-    background-color: green;
-    background: green;
-    color: rgb(255, 255, 255);
-    text-align: center;
-  }
 
-  .background{
-    background-color: rgb(174, 131, 75);
-  }
+.atm-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+  
+}
+
+.progress-bar {
+  position:absolute;
+  max-width: 479px;
+  top: 9px;
+  left: 452px;
+  width: 50px;
+  height: 94px;
+  /* max-width: 500px;
+  top: 7px;
+  left: 450px;
+  width: 10px;
+  height: 98px; */
+
+  margin-block-end: 100%;
+  background-color: green;
+  color: white;
+  text-align: center;
+  
+}
+.background{
+  background-color: rgb(174, 131, 75);
+}
