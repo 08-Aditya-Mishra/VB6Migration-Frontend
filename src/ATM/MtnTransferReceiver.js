@@ -51,7 +51,7 @@ const MtnTransferReceiver = () => {
     }
 
     const handleEnter = () => {
-        axios.get('http://localhost:5178/api/Account/' + receiverAccountNo)
+        axios.get('https://localhost:7286/api/Account/' + receiverAccountNo)
             .then(response => {
                 const accounts = response.data;
                 console.log(accounts)
@@ -65,7 +65,7 @@ const MtnTransferReceiver = () => {
                     }
                 } 
                 else {
-                    showNotification('info', 'Invalid Account Number: {'+receiverAccountNo+'} Please enter a valid account number for the recipient');
+                    showNotification('info', 'Invalid Account Number: {'+receiverAccountNo+'} Please enter a valid Account Number');
                 }
             })
             .catch(error => {
