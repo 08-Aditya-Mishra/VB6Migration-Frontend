@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Navbar from './Navbar';
+import { Link } from 'react-router-dom';
 import './CreateAccount.css'
 import NotificationManager from 'react-notifications/lib/NotificationManager';
 
@@ -47,7 +48,7 @@ const CreateAccount = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        axios.post('http://localhost:5178/api/Account', data, config)
+        axios.post('https://localhost:7286/api/Account', data, config)
             .then(response => {
                 showNotification('success', 'Congratulations, your account is created successfully');
                 setData({
@@ -73,43 +74,59 @@ const CreateAccount = () => {
             </div>
             <div className='create-acc-bg' style={{overflowY: 'scroll', maxHeight: '550px'}}>
                 <div className='mt-5 container'>
-                    <form onSubmit={handleSubmit} className="form-group mx-auto" style={{ backgroundColor: '#FFFFFF', width: "600px", margin: "50px", border: "1px solid black", padding: "30px" }}>
-                        <h2 className="mb-3">Create an Account</h2>
+                    <form onSubmit={handleSubmit} className="form-group mx-auto" style={{ backgroundColor: '#34568B', width: "600px", margin: "50px", padding: "30px" }}>
+                        <h2 className="mb-3 text-white"><center>Add New Account</center></h2>
+                        <br></br>
+
                         <div class="form-group row">
-                            <label for="accountName" class="col-sm-2 col-form-label">Account Name</label>
-                            <div class="col-sm-10">
-                                <input onChange={(e) => handle(e)} value={data.accountName} type="text" class="form-control mb-2" id="accountName" placeholder="Enter Account Name" required />
+                        <div class="col">
+                        <label for="accountName" class="text-white">Account Name:</label>
+                        </div>
+                        <div class="col-9">
+                            <input onChange={(e) => handle(e)} value={data.accountName} type="text" class="form-control mb-3" id="accountName" placeholder="Full Name" required />
+                        </div>
+                        </div>
+
+                        <div class="form-group row">
+                        <div class="col">
+                            <label for="amount" class="text-white">Amount:</label>
+                        </div>
+                            <div class="col-9">
+                                <input onChange={(e) => handle(e)} value={data.amount} type="number" class="form-control mb-3" id="amount" placeholder="Amount in ₹" required />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                        <div class="col">
+                            <label for="address" class="text-white">Address:</label>
+                            </div>
+                            <div class="col-9">
+                                <input onChange={(e) => handle(e)} value={data.address} type="text" class="form-control mb-3" id="address" placeholder="Address" required />
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="amount" class="col-sm-2 col-form-label">Amount</label>
-                            <div class="col-sm-10">
-                                <input onChange={(e) => handle(e)} value={data.amount} type="number" class="form-control mb-3" id="amount" placeholder="Enter Amount" required />
+                        <div class="col">
+                            <label for="phoneNo" class="text-white">Phone Number:</label>
+                            </div>
+                            <div class="col-9">
+                                <input onChange={(e) => handle(e)} value={data.phoneNo} type="tel" class="form-control mb-3" id="phoneNo" placeholder="+91-(000)-(000)-(0000)" required />
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="address" class="col-sm-2 col-form-label">Address</label>
-                            <div class="col-sm-10">
-                                <input onChange={(e) => handle(e)} value={data.address} type="text" class="form-control mb-3" id="address" placeholder="Enter Address" required />
+                        <div class="col">
+                            <label for="passport" class="text-white">Passport:</label>
+                            </div>
+                            <div class="col-9">
+                                <input onChange={(e) => handle(e)} value={data.passport} type="text" class="form-control mb-3" id="passport" placeholder="Passport Number" required />
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="phoneNo" class="col-sm-2 col-form-label">Phone Number</label>
-                            <div class="col-sm-10">
-                                <input onChange={(e) => handle(e)} value={data.phoneNo} type="tel" class="form-control mb-3" id="phoneNo" placeholder="Enter Phone Number" required />
+                        <div class="col">
+                            <label for="accountType" class="text-white">Account Type:</label>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="passport" class="col-sm-2 col-form-label">Passport</label>
-                            <div class="col-sm-10">
-                                <input onChange={(e) => handle(e)} value={data.passport} type="text" class="form-control mb-3" id="passport" placeholder="Enter Passport" required />
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="accountType" class="col-sm-2 col-form-label">Account Type</label>
-                            <div class="col-sm-10">
+                            <div class="col-9">
                                 <select onChange={(e) => handle(e)} class="form-control mb-3" id="accountType" required defaultValue={data.accountType}>
-                                    <option value="" disabled>Select an account type</option>
+                                    <option value="" disabled>Select Account Type</option>
                                     <option value="Savings">Savings</option>
                                     <option value="Current">Current</option>
                                 </select>
@@ -117,9 +134,11 @@ const CreateAccount = () => {
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="fingerprintID" class="col-sm-2 col-form-label">Fingerprint ID</label>
-                            <div class="col-sm-10">
-                                <input onChange={(e) => handle(e)} value={data.fingerprintID} type="text" class="form-control mb-3" id="fingerprintID" placeholder="Enter Fingerprint ID" required />
+                        <div class="col">
+                            <label for="fingerprintID" class="text-white">Fingerprint ID:</label>
+                            </div>
+                            <div class="col-9">
+                                <input onChange={(e) => handle(e)} value={data.fingerprintID} type="text" class="form-control mb-3" id="fingerprintID" placeholder="Fingerprint ID" required />
                             </div>
                         </div>
                         {/* <div class="form-group row">
@@ -134,9 +153,14 @@ const CreateAccount = () => {
                                 <input onChange={(e) => handle(e)} value={data.smsPort} type="text" class="form-control mb-3" id="smsPort" placeholder="Enter SMS Port" required />
                             </div>
                         </div> */}
-                        <div class="d-flex justify-content-center">
-                            <button type="submit" class="btn btn-dark mx-auto">Create</button>
-                        </div>
+                        <br></br>
+                        <div class="d-flex justify-content-center"><center>
+                            <button type="submit" class="btn btn-dark mx-auto">Register</button>
+                        
+                        <Link to="/navbar">
+                        <button class="btn btn-dark m-4">Cancel</button>
+                    </Link></center>
+                    </div>
                     </form>
                 </div>
             </div>
