@@ -37,13 +37,13 @@ const BalanceEnquiry = () => {
     useEffect(() => {
         var accountNo = location.state;
         setAccountNo(accountNo);
-        axios.get('http://localhost:5178/api/Account/' + accountNo)
+        axios.get('https://localhost:7286/api/Account/' + accountNo)
             .then(response => {
                 const account = response.data[0];
                 if (account) {
                     setAccountName(account.accountName);
                     setAmount(account.amount)
-                    showNotification('info', 'This is your remaining amount in your account');
+                    showNotification('info', 'Balance Information');
                 } else {
                     // show an error message
                     showNotification('error', 'Invalid account number: '+accountNo);
@@ -60,8 +60,9 @@ const BalanceEnquiry = () => {
             <div className='Balance-container'>
                 <table className="table-structure">
                     <tr>
-                        <th className="table-header">Balance Remaining in Account</th>
+                        <th className="table-header">Balance Details</th>
                     </tr>
+                    <br></br>
                     <tr>
                         <td>Account Name: {accountName}</td>
                     </tr>
@@ -72,6 +73,7 @@ const BalanceEnquiry = () => {
                         <td>Remaining Balance: {amount}</td>
                     </tr>
                 </table>
+                <br></br>
                 <div className="text-center mt-4">
                     <button onClick={handleClick} className="btn btn-dark">Close</button>
                 </div>
