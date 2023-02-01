@@ -53,7 +53,7 @@ const Withdraw = () => {
     }
 
     const handleEnter = () => {
-        axios.post('http://localhost:5178/Transaction/withdraw', { accountNo: accountNo, transactionAmount: transactionAmount })
+        axios.post('https://localhost:7286/Transaction/withdraw', { accountNo: accountNo, transactionAmount: transactionAmount })
             .then(response => {
                 const accounts = response.data;
                 if (accounts) {
@@ -71,8 +71,8 @@ const Withdraw = () => {
     return (
         <div className='withdrawBG'>
             <div className='withdraw-body'>
-                <div className='withdraw-header withdraw-header-style'>
-                    <h3>Enter Withdrawal Amount</h3>
+                <div className='withdraw-header'>
+                    <h3>Enter Amount to Withdraw</h3>
                 </div>
                 <div className="withdraw-container">
                     <div className="withdraw-output">
