@@ -37,14 +37,14 @@ const MiniStatement = () => {
     useEffect(() => {
         var accountNo = location.state;
         setAccountNo(accountNo);
-        axios.get('http://localhost:5178/Transaction/' + accountNo)
+        axios.get('https://localhost:7286/Transaction/' + accountNo)
             .then(response => {
                 const accounts = response.data;
                 if (accounts) {
                     setTransactions(accounts);
-                    showNotification('success', 'Here are the recent transactions of your account');
+                    showNotification('success', 'Here are the recent Transactions in your Account');
                 } else {
-                    showNotification('error', 'Please enter an account number');
+                    showNotification('error', 'Please enter Valid Account Number');
                 }
             })
             .catch(error => {
@@ -57,8 +57,7 @@ const MiniStatement = () => {
     return (
         <>
             <div className='mini-container'>
-                <div className='miniHeader'> <h2>MiniStatements</h2></div>
-                <div className='miniHeader'> <h3>Account Number: {accountNo}</h3></div>
+                <div className='miniHeader'> <h2>Mini Account Statement</h2></div>
                 <div className="col-sm-6 table-responsive mini-statement-container" style={{width:"1000px"}}>
                     <table class="table table-striped">
                         <thead>
