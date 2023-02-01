@@ -5,23 +5,23 @@
     background-size: cover;
 } */
 .keypadHeader {
-    font-family: 'Georgia', serif;
+    /*font-family: 'Georgia', serif; */
     color: rgb(0, 0, 0);
     position: absolute;
     left: 0;
-    top: 25%;
-    margin-left: 5%;
+    top: 30%;
+    margin-left: 6%;
     /* background-color: #ffffff; */
 }
 
 
 .keypad-container {
     position: absolute;
-    top: 70%;
-    left: 20%;
+    top: 69.7%;
+    left: 19.7%;
     transform: translate(-50%, -50%);
-    width: 320px;
-    height: 355px;
+    width: 345px;
+    height: 363px;
     border: 1px solid gray;
     border-radius: 5px;
     background-color: white;
