@@ -4,40 +4,40 @@
     background-size: cover;
 }  */
 
-  .landingContainer .btn {
-    display: grid; 
-    grid-template-columns: repeat(1, 5fr);
-    gap: 0px;
-    grid-row-gap: 0%;
-    height: 45px;
-    padding: 10px;
-    width: 350px;
-    top:50%
-    
-  }
+.landingContainer .btn {
+  display: grid; 
+  grid-template-columns: repeat(1, 5fr);
+  gap: 0px;
+  grid-row-gap: 0%;
+  height: 45px;
+  padding: 10px;
+  width: 350px;
+  top:50%
   
+}
+
 
 .landingContainer {
-  background-image: url('./landing_page.png');
-  background-size: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-repeat: no-repeat;
-  background-position: center;
-  display: block;
-  width: 100%;
-  height: 100%;
+background-image: url('./landing_page.png');
+background-size: cover;
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-repeat: no-repeat;
+background-position: center;
+display: block;
+width: 100%;
+height: 100%;
 }
 
 .buttonPosi{
-  margin-top: 17%;
-  margin-left: 5.5%;
-  background-color: azure;
-  width: 330px;
-  height: 230px;
+margin-top: 17%;
+margin-left: 5.5%;
+background-color: rgb(188, 194, 194);
+width: 330px;
+height: 230px;
 }
 
 
@@ -45,4 +45,3 @@
 
 
 
-  
