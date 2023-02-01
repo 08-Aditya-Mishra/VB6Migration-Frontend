@@ -5,6 +5,7 @@
     background-size: cover;
 } */
 .withdraw-header {
+    color: white;
     margin-top: 20px;
     display: flex;
     align-items: center;
