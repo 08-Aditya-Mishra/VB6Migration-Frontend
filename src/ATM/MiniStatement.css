@@ -1,12 +1,12 @@
 .mini-statement-container {
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 1000px;
 
     border: 1px solid gray;
-    border-radius: 5px;
+    border-radius: 2px;
     background-color: white;
     z-index: 1;
     display: flex;
@@ -16,7 +16,8 @@
 
 .back-button {
     text-align: left;
-    margin-left: 20px;
+    margin-top: 400px;
+    margin-left: 50%;
 }
 
 .mini-container {
@@ -36,7 +37,7 @@
 
 .miniHeader {
     color: white;
-    margin-top: 20px;
+    margin-top: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
