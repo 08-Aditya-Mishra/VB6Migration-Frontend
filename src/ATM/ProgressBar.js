@@ -36,7 +36,7 @@ const ProgressBar = () => {
     showNotification('success', 'Welcome to the My Bank ATM');
     intervalId = setInterval(() => {
       const elapsed = Date.now() - start;
-      const newPercentage = Math.round((elapsed / 3000) * 100);
+      const newPercentage = Math.round((elapsed / 2000) * 100);
       if (newPercentage <= 100) {
         setPercentage(newPercentage);
       } 
