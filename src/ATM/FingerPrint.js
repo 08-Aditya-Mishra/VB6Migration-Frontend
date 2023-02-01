@@ -43,7 +43,7 @@ const FingerPrint = () => {
       }
 
     const handleEnter = () => {
-        axios.get('http://localhost:5178/api/Account/' + accountNo)
+        axios.get('https://localhost:7286/api/Account/' + accountNo)
             .then(response => {
                 console.log(maskedValue)
                 console.log(inputValue)
@@ -56,7 +56,7 @@ const FingerPrint = () => {
                     console.log(account[0]);
                     if (inputHash == account[0].fingerprintID) {
                         navigate('/landing', { state: accountNo });
-                        showNotification('success', 'Congratulations, FingerprintID is Verified');
+                        showNotification('success', 'FingerprintID Verified');
                         setInputValue('');
                         setMaskedValue('');
                     }
