@@ -40,7 +40,7 @@ function Login() {
   
   const handleApi = (e) => {
     console.log({ userName, password })
-    axios.post('http://localhost:5178/api/Admin/login', {
+    axios.post('https://localhost:7286/api/Admin/login', {
       username: userName,
       password: password
     })
@@ -61,19 +61,26 @@ function Login() {
   }
   return (
     <div className="loginBG">
-      <div className="mt-6 container col-sm-4 p-5" style={{ backgroundColor:'#FFFFFF', marginTop: "100px", border: "1px solid black" }}>
-        <h2>Login Here</h2>
-        <div className="mb-3">
-          <label for="exampleInputEmail1" className="form-label-login">Username</label>
-          <input value={userName} onChange={handleUserName} type="text" className="form-control" id="exampleInputEmail1" />
+      <div className="mt-6 container col-sm-4 p-5 bg-dark text-white" style={{ backgroundColor:'#FFFFFF', marginTop: "70px", border: "1px solid black", borderRadius:"10px" }}>
+        <h2><center>BANKER LOGIN</center></h2>
+        <p class="text-white-50 mb-5"><center>Please enter your username and password!</center></p>
+        
+        <div class="form-outline form-white mb-4">
+                <label class="form-label" for="typeEmailX">Username</label>
+                <input value={userName} onChange={handleUserName} type="text" id="typeEmailX" class="form-control form-control-lg" />
         </div>
-        <div className="mb-3">
-          <label for="exampleInputPassword1" className="form-label-login">Password</label>
-          <input value={password} onChange={handlePassword} type="password" className="form-control" id="exampleInputPassword1" />
 
+        <div class="form-outline form-white mb-4">
+        <label class="form-label" for="typePasswordX">Password</label>
+                <input value={password} onChange={handlePassword} type="password" id="typePasswordX" class="form-control form-control-lg" />
+                
         </div>
-        <button onClick={handleApi} className="btn btn-light"> Login</button>&nbsp;&nbsp;
-        <button onClick={handleCancel} className="btn btn-dark"> Cancel</button>
+
+        <br></br>
+
+        
+        <button onClick={handleApi} class="btn btn-outline-light btn-lg px-5" type="submit">LOGIN</button>&nbsp;
+        <button onClick={handleCancel} class="btn btn-outline-light btn-lg px-5" type="submit">CANCEL</button>
       </div>
     </div>
   )
